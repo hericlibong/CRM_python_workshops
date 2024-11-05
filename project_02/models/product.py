@@ -10,9 +10,10 @@ class Product(Base):
     nom = Column(String(100), nullable=False)
     prix = Column(Float, nullable=False)
     description = Column(String(255), nullable=True)
+    stock = Column(Integer, nullable=False, default=0)
     
     # Relation vers OrderItem
     order_items = relationship("OrderItem", back_populates="product", cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"<Product(id={self.id}, nom={self.nom}, prix={self.prix})>"
+        return f"<Product(id={self.id}, nom={self.nom}, prix={self.prix}, stock={self.stock})>"
